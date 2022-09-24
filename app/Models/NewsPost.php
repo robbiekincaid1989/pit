@@ -10,10 +10,15 @@ class NewsPost extends Model
     use HasFactory;
 
     protected $table = 'newsposts';
-    protected $fillable = ['title', 'content', 'newscategory_id'];
+    protected $fillable = ['title', 'content', 'newscategory_id', 'user_id'];
 
     public function newscategory()
     {
         return $this->belongsTo(NewsPostCategory::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

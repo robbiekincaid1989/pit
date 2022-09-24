@@ -11,11 +11,11 @@ class HomeController extends Controller
     public function index()
     {
         $categories = NewsPostCategory::all();
-        $posts = NewsPost::when(request('category_id'), function($query) {
-            $query->where('blogcategory_id', request('category_id'));
+        $posts = NewsPost::when(request('newscategory_id'), function($query) {
+            $query->where('newscategory_id', request('category_id'));
         })->latest()->get();
 
-        return view('index', [
+        return view('welcome', [
             'categories' => $categories,
             'newsposts' => $posts
         ]);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsPostCategoryController;
 use App\Http\Controllers\NewsPostController;
 use App\Models\NewsPost;
@@ -16,9 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/login', function() {
+        return view('auth.login');
+    })->name('auth.login');
+
+Route::get('/register', function() {
+        return view('auth.register');
+    })->name('auth.register');
 
 Route::group(['middleware' => ['auth']], function() {
     // Display the dashboard to logged in users

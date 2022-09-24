@@ -66,7 +66,7 @@ class NewsPostCategoryController extends Controller
      * @param  \App\Models\NewsPostCategory  $newsPostCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(StoreNewsCategoryRequest $category)
+    public function edit(NewsPostCategory $category)
     {
         // Display the edit form
         return view('categories.edit', [

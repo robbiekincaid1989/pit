@@ -46,11 +46,15 @@ class NewsPostController extends Controller
      */
     public function store(StoreNewsPostRequest $request)
     {
-        // Store the newly created nefws post
+        // Assign the user_id of the currently signed in user
+        $user = Auth()->user()->id;
+
+        // Store the newly created news post
         NewsPost::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
-            'newscategory_id' => $request->input('newscategory_id')
+            'newscategory_id' => $request->input('newscategory_id'),
+            'user_id' => $user
         ]);
 
         return redirect()->route('newsposts.index');
